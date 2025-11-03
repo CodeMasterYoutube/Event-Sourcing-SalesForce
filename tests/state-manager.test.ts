@@ -2,8 +2,8 @@
  * Tests for CartStateManager
  */
 
-import { CartStateManager } from "../state-manager";
-import { CartEvent, SessionNotFoundError, DEFAULT_CONFIG } from "../types";
+import { CartStateManager } from "../dist/state-manager";
+import { CartEvent, SessionNotFoundError, DEFAULT_CONFIG } from "../src/types";
 
 describe("CartStateManager", () => {
   let stateManager: CartStateManager;

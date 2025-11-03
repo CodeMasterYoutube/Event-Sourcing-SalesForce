@@ -2,13 +2,13 @@
  * Tests for SalesforceCartClient
  */
 
-import { SalesforceCartClient } from "../salesforce-client";
+import { SalesforceCartClient } from "../src/salesforce-client";
 import {
   ContextExpiredError,
   ItemNotFoundError,
   CartItem,
   DEFAULT_CONFIG,
-} from "../types";
+} from "../src/types";
 
 describe("SalesforceCartClient", () => {
   let client: SalesforceCartClient;

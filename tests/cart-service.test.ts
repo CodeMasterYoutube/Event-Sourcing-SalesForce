@@ -2,9 +2,9 @@
  * Tests for CartService
  */
 
-import { CartService } from "../cart-service";
-import { CartStateManager } from "../state-manager";
-import { SalesforceCartClient } from "../salesforce-client";
+import { CartService } from "../src/cart-service";
+import { CartStateManager } from "../dist/state-manager";
+import { SalesforceCartClient } from "../src/salesforce-client";
 import {
   DEFAULT_CONFIG,
   SessionNotFoundError,
@@ -12,7 +12,7 @@ import {
   InvalidQuantityError,
   EmptyCartError,
   SessionCompletedError,
-} from "../types";
+} from "../src/types";
 
 describe("CartService", () => {
   let cartService: CartService;

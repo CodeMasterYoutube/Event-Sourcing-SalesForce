@@ -12,7 +12,7 @@ const PORT = process.env.PORT
 const app = createApp(DEFAULT_CONFIG);
 
 app.listen(PORT, () => {
-  console.log(` Telecom Cart API running on http://localhost:${PORT}`);
-  console.log(` API documentation: http://localhost:${PORT}/`);
-  console.log(`  Health check: http://localhost:${PORT}/api/health`);
+  console.log(`Telecom Cart API running on http://localhost:${PORT}`);
+  console.log(`API documentation: http://localhost:${PORT}/`);
+  console.log(`Health check: http://localhost:${PORT}/api/health`);
 });
