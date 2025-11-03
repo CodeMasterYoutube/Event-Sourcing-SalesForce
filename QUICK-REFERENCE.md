@@ -2,10 +2,10 @@
 
 ## TL;DR
 
-✅ **Your cart state is persisted through event sourcing**
-✅ **SF context can expire without data loss**
-✅ **Automatic replay rebuilds cart state transparently**
-✅ **All 61 tests pass**
+**Your cart state is persisted through event sourcing**
+**SF context can expire without data loss**
+**Automatic replay rebuilds cart state transparently**
+**All 61 tests pass**
 
 ## Run Verifications
 
@@ -70,13 +70,13 @@ npm test tests/integration.test.ts
 
 ## Test Coverage
 
-✅ Basic expiration with 2 items ([cart-service.test.ts:185](tests/cart-service.test.ts#L185))
-✅ Multiple expiries in one session ([cart-service.test.ts:434](tests/cart-service.test.ts#L434))
-✅ Complex operations with expiry ([cart-service.test.ts:474](tests/cart-service.test.ts#L474))
-✅ Checkout after expiration ([cart-service.test.ts:411](tests/cart-service.test.ts#L411))
-✅ Event replay accuracy ([integration.test.ts:87](tests/integration.test.ts#L87))
-✅ Cart state reconstruction ([integration.test.ts:217](tests/integration.test.ts#L217))
-✅ Session isolation ([integration.test.ts:250](tests/integration.test.ts#L250))
+Basic expiration with 2 items ([cart-service.test.ts:185](tests/cart-service.test.ts#L185))
+Multiple expiries in one session ([cart-service.test.ts:434](tests/cart-service.test.ts#L434))
+Complex operations with expiry ([cart-service.test.ts:474](tests/cart-service.test.ts#L474))
+Checkout after expiration ([cart-service.test.ts:411](tests/cart-service.test.ts#L411))
+Event replay accuracy ([integration.test.ts:87](tests/integration.test.ts#L87))
+Cart state reconstruction ([integration.test.ts:217](tests/integration.test.ts#L217))
+Session isolation ([integration.test.ts:250](tests/integration.test.ts#L250))
 
 ## Quick Test
 
@@ -128,10 +128,10 @@ console.log(cart.items); // [item1, item2]
 ## Example Output (from verify-expiration.ts)
 
 ```
-✅ Cart state persisted through multiple SF context expirations
-✅ Event sourcing correctly rebuilds cart state
-✅ Automatic replay works seamlessly
-✅ Checkout works after expiration
+ Cart state persisted through multiple SF context expirations
+ Event sourcing correctly rebuilds cart state
+ Automatic replay works seamlessly
+ Checkout works after expiration
 ```
 
 ## Architecture
