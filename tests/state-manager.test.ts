@@ -2,8 +2,8 @@
  * Tests for CartStateManager
  */
 
-import { CartStateManager } from "../dist/state-manager";
-import { CartEvent, SessionNotFoundError, DEFAULT_CONFIG } from "../src/types";
+import { CartStateManager } from "../src/state-manager";
+import { CartEvent, DEFAULT_CONFIG } from "../src/types";
 
 describe("CartStateManager", () => {
   let stateManager: CartStateManager;
@@ -48,7 +48,7 @@ describe("CartStateManager", () => {
     it("should throw SessionNotFoundError for non-existent session", () => {
       expect(() => {
         stateManager.getSession("nonexistent");
-      }).toThrow(SessionNotFoundError);
+      }).toThrow("Session nonexistent not found");
     });
 
     it("should update last activity timestamp", () => {

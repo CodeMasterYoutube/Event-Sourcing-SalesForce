@@ -25,11 +25,13 @@ export class CartStateManager {
     this.maxSessionAge = config.MAX_SESSION_AGE_MS;
     this.taxRate = config.TAX_RATE;
     
-    // Start cleanup interval
-    this.cleanupInterval = setInterval(
+    // Start cleanup interval (unref to not block process exit)
+    const interval = setInterval(
       () => this.cleanupOldSessions(),
       config.SESSION_CLEANUP_INTERVAL_MS
     );
+    interval.unref();
+    this.cleanupInterval = interval;
   }
 
   /**

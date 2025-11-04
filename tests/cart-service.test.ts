@@ -3,7 +3,7 @@
  */
 
 import { CartService } from "../src/cart-service";
-import { CartStateManager } from "../dist/state-manager";
+import { CartStateManager } from "../src/state-manager";
 import { SalesforceCartClient } from "../src/salesforce-client";
 import {
   DEFAULT_CONFIG,

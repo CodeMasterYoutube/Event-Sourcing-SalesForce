@@ -5,10 +5,10 @@
  * by using event sourcing and automatic replay.
  */
 
-import { CartService } from "../cart-service";
-import { CartStateManager } from "../state-manager";
-import { SalesforceCartClient } from "../salesforce-client";
-import { DEFAULT_CONFIG, Config } from "../types";
+import { CartService } from "../src/cart-service";
+import { CartStateManager } from "../src/state-manager";
+import { SalesforceCartClient } from "../src/salesforce-client";
+import { DEFAULT_CONFIG, Config, CartItem } from "../src/types";
 
 describe("Event Sourcing & Expiration Integration", () => {
   let cartService: CartService;
@@ -71,8 +71,8 @@ describe("Event Sourcing & Expiration Integration", () => {
       // Verify cart has both items
       const cart = cartService.getCart(sessionId);
       expect(cart.items).toHaveLength(2);
-      expect(cart.items.find((i) => i.id === "device1")).toBeDefined();
-      expect(cart.items.find((i) => i.id === "plan1")).toBeDefined();
+      expect(cart.items.find((i: CartItem) => i.id === "device1")).toBeDefined();
+      expect(cart.items.find((i: CartItem) => i.id === "plan1")).toBeDefined();
     });
 
     it("should maintain correct quantities through replay", async () => {
@@ -164,10 +164,10 @@ describe("Event Sourcing & Expiration Integration", () => {
       const cart = cartService.getCart(sessionId);
       expect(cart.items).toHaveLength(4);
 
-      const phone = cart.items.find((i) => i.id === "phone1");
-      const plan = cart.items.find((i) => i.id === "plan1");
-      const addon1 = cart.items.find((i) => i.id === "addon1");
-      const addon2 = cart.items.find((i) => i.id === "addon2");
+      const phone = cart.items.find((i: CartItem) => i.id === "phone1");
+      const plan = cart.items.find((i: CartItem) => i.id === "plan1");
+      const addon1 = cart.items.find((i: CartItem) => i.id === "addon1");
+      const addon2 = cart.items.find((i: CartItem) => i.id === "addon2");
 
       expect(phone?.quantity).toBe(1); // 2 added, 1 removed
       expect(plan?.quantity).toBe(1); // Updated to 1
@@ -329,9 +329,9 @@ describe("Event Sourcing & Expiration Integration", () => {
 
       // All items should be in the order
       expect(result.items).toHaveLength(3);
-      expect(result.items.find((i) => i.id === "item1")).toBeDefined();
-      expect(result.items.find((i) => i.id === "item2")).toBeDefined();
-      expect(result.items.find((i) => i.id === "item3")).toBeDefined();
+      expect(result.items.find((i: CartItem) => i.id === "item1")).toBeDefined();
+      expect(result.items.find((i: CartItem) => i.id === "item2")).toBeDefined();
+      expect(result.items.find((i: CartItem) => i.id === "item3")).toBeDefined();
 
       // Verify pricing
       const expectedSubtotal = 30000 + 5000 + 1000 * 2;
@@ -438,15 +438,15 @@ describe("Event Sourcing & Expiration Integration", () => {
       expect(cart1.items).toHaveLength(2);
       expect(cart2.items).toHaveLength(2);
 
-      expect(cart1.items.find((i) => i.id === "item1")).toBeDefined();
-      expect(cart1.items.find((i) => i.id === "item3")).toBeDefined();
+      expect(cart1.items.find((i: CartItem) => i.id === "item1")).toBeDefined();
+      expect(cart1.items.find((i: CartItem) => i.id === "item3")).toBeDefined();
 
-      expect(cart2.items.find((i) => i.id === "item2")).toBeDefined();
-      expect(cart2.items.find((i) => i.id === "item4")).toBeDefined();
+      expect(cart2.items.find((i: CartItem) => i.id === "item2")).toBeDefined();
+      expect(cart2.items.find((i: CartItem) => i.id === "item4")).toBeDefined();
 
       // Verify no cross-contamination
-      expect(cart1.items.find((i) => i.id === "item2")).toBeUndefined();
-      expect(cart2.items.find((i) => i.id === "item1")).toBeUndefined();
+      expect(cart1.items.find((i: CartItem) => i.id === "item2")).toBeUndefined();
+      expect(cart2.items.find((i: CartItem) => i.id === "item1")).toBeUndefined();
     });
   });
 });
